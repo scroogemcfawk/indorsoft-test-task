@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://projectDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="projectDc"
+                  class="com.company.indorsoft.entity.Project">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+        <collection id="employeesDc" class="com.company.indorsoft.entity.Employee">
+            <fetchPlan extends="_local"/>
+            <loader id="employeesDl">
+                <query>
+                    <![CDATA[select e from IDS_Employee e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="projectDc">
+            <textField id="nameField" property="name"/>
+        </formLayout>
+        <checkboxGroup dataContainer="projectDc"
+                       property="employees"
+                       itemsContainer="employeesDc"
+                       label="Employees"
+        />
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
