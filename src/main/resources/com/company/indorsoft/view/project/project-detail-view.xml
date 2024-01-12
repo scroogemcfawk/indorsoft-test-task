@@ -32,7 +32,11 @@
                        property="employees"
                        itemsContainer="employeesDc"
                        label="Employees"
+                       id="employeesCheckbox"
         />
+        <hbox id="employeesActions">
+            <button id="involveAll" text="msg://actions.InvolveAll"/>
+        </hbox>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>
