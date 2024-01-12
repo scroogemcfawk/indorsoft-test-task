@@ -6,10 +6,13 @@
     <data>
         <collection id="projectsDc"
                     class="com.company.indorsoft.entity.Project">
-            <fetchPlan extends="_base"/>
+            <fetchPlan>
+                <property name="name"/>
+                <property name="employees" />
+            </fetchPlan>
             <loader id="projectsDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from IDS_Project e]]>
+                    <![CDATA[select p from IDS_Project p]]>
                 </query>
             </loader>
         </collection>
@@ -26,10 +29,10 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-<!--        <genericFilter id="genericFilter"-->
-<!--                       dataLoader="projectsDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </genericFilter>-->
+        <genericFilter id="genericFilter"
+                       dataLoader="projectsDl">
+            <properties include=".*"/>
+        </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createBtn" action="projectsDataGrid.create"/>
             <button id="editBtn" action="projectsDataGrid.edit"/>
